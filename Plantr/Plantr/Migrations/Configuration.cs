@@ -21,26 +21,20 @@ namespace Plantr.Migrations
                    new Plant() { Id = 3, Name = "Radish" }
                    );
 
-            context.PlantInfoes.AddOrUpdate(x => x.Id,
-                new PlantInfo()
+            context.Plants.AddOrUpdate(x => x.Id,
+                new Plant()
                 {
                     Id = 1,
-                    PlantId = 1,
-                    Catagory = "Flower",
                     Price = 1  
                 },
-                new PlantInfo()
+                new Plant()
                 {
                     Id = 2,
-                    PlantId = 2,
-                    Catagory = "Veggie",
                     Price = 1
                 },
-                new PlantInfo()
+                new Plant()
                 {
                     Id = 3,
-                    PlantId = 3,
-                    Catagory = "Veggie",
                     Price = 4M,
                 }
                 );

@@ -22,6 +22,5 @@ namespace Plantr.Models
 
         public System.Data.Entity.DbSet<Plantr.Models.Plant> Plants { get; set; }
 
-        public System.Data.Entity.DbSet<Plantr.Models.PlantInfo> PlantInfoes { get; set; }
     }
 }
