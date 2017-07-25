@@ -17,7 +17,8 @@ namespace Planter.Models
     
         public PlanterContext() : base("name=PlanterContext")
         {
-        }
+            this.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
+            }
 
         public System.Data.Entity.DbSet<Planter.Models.Plant> Plants { get; set; }
     }

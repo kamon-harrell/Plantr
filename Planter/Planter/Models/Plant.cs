@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Planter.Models
-{
+    {
     public class Plant
     {
         public int Id { get; set; }
@@ -17,6 +13,5 @@ namespace Planter.Models
         public string Description { get; set; }
         public string Space { get; set; }
         public int Germination { get; set; }
-
     }
 }

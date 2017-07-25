@@ -18,9 +18,21 @@ namespace Planter.Controllers
         private PlanterContext db = new PlanterContext();
 
         // GET: api/Plants
-        public IQueryable<Plant> GetPlants()
+        public IQueryable<PlantDTO> GetPlants()
         {
-            return db.Plants;
+            var plants = from p in db.Plants
+                         select new PlantDTO()
+                             {
+                                Id = p.Id,
+                                Name = p.Name,
+                                Price = p.Price,
+                                Harvest = p.Harvest,
+                                Water = p.Water,
+                                Description = p.Description,
+                                Space = p.Space,
+                                Germination = p.Germination
+                             };
+            return db.plants;
         }
 
         // GET: api/Plants/5
