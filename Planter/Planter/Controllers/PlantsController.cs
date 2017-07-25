@@ -18,28 +18,27 @@ namespace Planter.Controllers
         private PlanterContext db = new PlanterContext();
 
         // GET: api/Plants
-        public IQueryable<PlantDTO> GetPlants()
+        public IQueryable<Plant> GetPlants()
         {
-            var plants = from p in db.Plants
-                         select new PlantDTO()
-                             {
-                                Id = p.Id,
-                                Name = p.Name,
-                                Price = p.Price,
-                                Harvest = p.Harvest,
-                                Water = p.Water,
-                                Description = p.Description,
-                                Space = p.Space,
-                                Germination = p.Germination
-                             };
-            return db.plants;
+            return db.Plants;
         }
 
         // GET: api/Plants/5
-        [ResponseType(typeof(Plant))]
+        [ResponseType(typeof(PlantDTO))]
         public async Task<IHttpActionResult> GetPlant(int id)
         {
-            Plant plant = await db.Plants.FindAsync(id);
+            var plant = await db.Plants.Select(p =>
+                        new PlantDTO()
+                        {
+                            Id = p.Id,
+                            Name = p.Name,
+                            Price = p.Price,
+                            Harvest = p.Harvest,
+                            Water = p.Water,
+                            Description = p.Description,
+                            Space = p.Space,
+                            Germination = p.Germination
+                         }).SingleOrDefaultAsync(p => p.Id == id);
             if (plant == null)
             {
                 return NotFound();
@@ -94,6 +93,18 @@ namespace Planter.Controllers
 
             db.Plants.Add(plant);
             await db.SaveChangesAsync();
+
+            var dto = new PlantDTO()
+                {
+                    Id = plant.Id,
+                    Name = plant.Name,
+                    Price = plant.Price,
+                    Harvest = plant.Harvest,
+                    Water = plant.Water,
+                    Description = plant.Description,
+                    Space = plant.Space,
+                    Germination = plant.Germination
+                };
 
             return CreatedAtRoute("DefaultApi", new { id = plant.Id }, plant);
         }

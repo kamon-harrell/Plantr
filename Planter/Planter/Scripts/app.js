@@ -19,7 +19,7 @@
     }
 
     function getAllPlants() {
-        ajaxHelper(PlantsUri, 'GET').done(function (data) {
+        ajaxHelper(plantsUri, 'GET').done(function (data) {
             self.plants(data);
         });
     }
