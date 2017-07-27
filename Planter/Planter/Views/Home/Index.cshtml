@@ -8,7 +8,7 @@
 
 <div class="row">
 
-    <div class="col-md-4">
+    <div class="col-md-6">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h2 class="panel-title">Plants</h2>
@@ -19,7 +19,7 @@
                         <h2><strong><span data-bind="text: Name"></span></strong></h2>
                         <ul>
                             <li><p>Description: <span data-bind="text: Description"></span></p></li>
-                            <li><p>Price: <span data-bind="text: Price"></span></p></li>
+                            <li><p>Price: <span data-bind="text: Price"></span>$</p></li>
                             <li><p>Days to harvest: <span data-bind="text: Harvest"></span></p></li>
                             <li><p>Space between: <span data-bind="text: Space"></span></p></li>
                             <li><p>Days between watering: <span data-bind="text: Water"></span></p></li>
@@ -32,11 +32,56 @@
         <div class="alert alert-danger" data-bind="visible: error"><p data-bind="text: error"></p></div>
     </div>
 
-    <div class="col-md-4">
-        <!-- TODO: Book details -->
-    </div>
 
-    <div class="col-md-4">
-        <!-- TODO: Add new book -->
+
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Add Plant</h2>
+            </div>
+
+            <div class="panel-body">
+                <form class="form-horizontal" data-bind="submit: addPlant">
+
+                    <div class="form-group" data-bind="with: newPlant">
+                        <label for="inputName" class="col-sm-2 control-label">Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputName" data-bind="value:Name" />
+                        </div>
+
+                        <label for="inputDescription" class="col-sm-2 control-label">Description</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputDescription" data-bind="value:Description" />
+                        </div>
+
+                        <label for="inputPrice" class="col-sm-2 control-label">Price</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputPrice" data-bind="value:Price" />
+                        </div>
+
+                        <label for="inputHarvest" class="col-sm-2 control-label">Harvest</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputHarvest" data-bind="value:Harvest" />
+                        </div>
+
+                        <label for="inputSpace" class="col-sm-2 control-label">Space</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputSpace" data-bind="value:Space" />
+                        </div>
+
+                        <label for="inputWater" class="col-sm-2 control-label">Water</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputWater" data-bind="value:Water" />
+                        </div>
+
+                        <label for="inputGermination" class="col-sm-2 control-label">Germination</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputGermination" data-bind="value:Germination" />
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
