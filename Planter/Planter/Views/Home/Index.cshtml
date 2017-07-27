@@ -16,8 +16,15 @@
             <div class="panel-body">
                 <ul class="list-unstyled" data-bind="foreach: plants">
                     <li>
-                        <strong><span data-bind="text: Name"></span></strong>: <span data-bind="text: Price"></span>
-                        <small><a href="#">Details</a></small>
+                        <h2><strong><span data-bind="text: Name"></span></strong></h2>
+                        <ul>
+                            <li><p>Description: <span data-bind="text: Description"></span></p></li>
+                            <li><p>Price: <span data-bind="text: Price"></span></p></li>
+                            <li><p>Days to harvest: <span data-bind="text: Harvest"></span></p></li>
+                            <li><p>Space between: <span data-bind="text: Space"></span></p></li>
+                            <li><p>Days between watering: <span data-bind="text: Water"></span></p></li>
+                            <li><p>Days to germination: <span data-bind="text: Germination"></span></p></li>
+                        </ul>
                     </li>
                 </ul>
             </div>
