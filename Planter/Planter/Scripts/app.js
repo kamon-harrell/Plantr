@@ -5,6 +5,7 @@
     self.newPlant = {
         Id: ko.observable(),
         Name: ko.observable(),
+        Description: ko.observable(),
         Price: ko.observable(),
         Harvest: ko.observable(),
         Space: ko.observable(),
@@ -36,6 +37,7 @@
     self.addPlant = function (formElement) {
         var plant = {
             Name: self.newPlant.Name(),
+            Description: self.newPlant.Description(),
             Price: self.newPlant.Price(),
             Harvest: self.newPlant.Harvest(),
             Space: self.newPlant.Space(),
