@@ -1,7 +1,10 @@
 ﻿var ViewModel = function () {
+
     var self = this;
+
     self.plants = ko.observableArray();
     self.error = ko.observable();
+
     self.newPlant = {
         Id: ko.observable(),
         Name: ko.observable(),
@@ -48,6 +51,12 @@
         ajaxHelper(plantsUri, 'POST', plant).done(function (item) {
             self.plants.push(item);
         });
+    }
+
+    function deletePlant() {
+        ajaxHelper(plantsUri, 'DELETE', plant).done(function (data) {
+            self.plants(data)
+        })
     }
 
     // Fetch the initial data.
