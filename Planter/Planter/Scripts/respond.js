@@ -297,11 +297,11 @@ window.matchMedia = window.matchMedia || (function(doc, undefined){
 			}	
 			req.open( "GET", url, true );
 			req.onreadystatechange = function () {
-				if ( req.readyState != 4 || req.status != 200 && req.status != 304 ){
-					return;
-				}
-				callback( req.responseText );
-			}
+			    if (req.readyState != 4 || req.status != 200 && req.status != 304) {
+			        return;
+			    }
+			    callback(req.responseText);
+			};
 			if ( req.readyState == 4 ){
 				return;
 			}
