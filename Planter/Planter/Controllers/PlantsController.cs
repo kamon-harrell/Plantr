@@ -106,7 +106,7 @@ namespace Planter.Controllers
                     Germination = plant.Germination
                 };
 
-            return CreatedAtRoute("DefaultApi", new { id = plant.Id }, plant);
+            return CreatedAtRoute("DefaultApi", new { id = plant.Id }, dto);
         }
 
         // DELETE: api/Plants/5

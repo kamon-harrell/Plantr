@@ -1,12 +1,8 @@
 ﻿var ViewModel = function () {
-
     var self = this;
-
     self.plants = ko.observableArray();
     self.error = ko.observable();
-
     self.newPlant = {
-        Id: ko.observable(),
         Name: ko.observable(),
         Description: ko.observable(),
         Price: ko.observable(),
@@ -14,7 +10,7 @@
         Space: ko.observable(),
         Water: ko.observable(),
         Germination: ko.observable()
-    }
+    };
 
     var plantsUri = '/api/Plants/';
 
@@ -24,7 +20,7 @@
             type: method,
             url: uri,
             dataType: 'json',
-            contentType: 'application/json',
+            contentType: 'application/json; charset=utf-8',
             data: data ? JSON.stringify(data) : null
         }).fail(function (jqXHR, textStatus, errorThrown) {
             self.error(errorThrown);
@@ -48,21 +44,19 @@
             Germination: self.newPlant.Germination()
         };
 
-        ajaxHelper(plantsUri, 'POST', plant).done(function (item) {
-            self.plants.push(item);
+        $.ajax({
+            type: 'POST',
+            url: plantsUri,
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8'
+           
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            self.error(errorThrown);
         });
-    }
-
-    function deletePlant() {
-        ajaxHelper(plantsUri, 'DELETE', plant).done(function (data) {
-            self.plants(data)
-        })
-    }
+    };
 
     // Fetch the initial data.
     getAllPlants();
 };
-
-
 
 ko.applyBindings(new ViewModel());
