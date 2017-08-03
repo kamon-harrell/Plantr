@@ -63,4 +63,6 @@
     getAllPlants();
 };
 
+
+
 ko.applyBindings(new ViewModel());
