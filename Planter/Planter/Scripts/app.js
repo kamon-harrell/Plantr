@@ -3,6 +3,7 @@
     self.plants = ko.observableArray();
     self.error = ko.observable();
     self.newPlant = {
+        Id: ko.observable(),
         Name: ko.observable(),
         Description: ko.observable(),
         Price: ko.observable(),
@@ -14,27 +15,16 @@
 
     var plantsUri = '/api/Plants/';
 
-    function ajaxHelper(uri, method, data) {
-        self.error(''); // Clear error message
-        return $.ajax({
-            type: method,
-            url: uri,
-            dataType: 'json',
-            contentType: 'application/json; charset=utf-8',
-            data: data ? JSON.stringify(data) : null
-        }).fail(function (jqXHR, textStatus, errorThrown) {
-            self.error(errorThrown);
-        });
-    }
 
     function getAllPlants() {
-        ajaxHelper(plantsUri, 'GET').done(function (data) {
+        $.ajax(plantsUri, 'GET').done(function (data) {
             self.plants(data);
         });
     }
 
-    self.addPlant = function (formElement) {
+    self.addPlant = function (formElement, data) {
         var plant = {
+            Id: self.newPlant.Id(),
             Name: self.newPlant.Name(),
             Description: self.newPlant.Description(),
             Price: self.newPlant.Price(),
@@ -48,8 +38,8 @@
             type: 'POST',
             url: plantsUri,
             dataType: 'json',
-            contentType: 'application/json; charset=utf-8'
-           
+            contentType: 'application/json; charset=utf-8',
+            data: data,
         }).fail(function (jqXHR, textStatus, errorThrown) {
             self.error(errorThrown);
         });
